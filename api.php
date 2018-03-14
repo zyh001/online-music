@@ -1,14 +1,14 @@
 <?php
 /**************************************************
- * MKOnlinePlayer v2.3
+ * MKOnlinePlayer v2.4
  * 后台音乐数据抓取模块
  * 编写：mengkun(https://mkblog.cn)
- * 时间：2018-2-11
+ * 时间：2018-3-11
  * 特别感谢 @metowolf 提供的 Meting.php
  *************************************************/
 
 /************ ↓↓↓↓↓ 如果网易云音乐歌曲获取失效，请将你的 COOKIE 放到这儿 ↓↓↓↓↓ ***************/
-$netease_cookie = '';
+$netease_cookie = '__guid=94650624.1727620104038679800.1519865751304.5928; JSESSIONID-WYYY=GZK%5Cx%2ByZCpOohnySxRctvR1dTVgqlS5B9YpK42%2BKBplR40B%2FRjlVzQxS6fYpjOhN98DJm%2FiZPXd1WnR%2Bz61mxmCgjPIoulpl%2Bo145aIUsSgT6qM4d8Cq%2F%2FpSx7y8C1WvbX55vqvln1M4UYV1Fx2XPNrHqFSSZ0wFCnAK9VGP%5C5MtPsBP%3A1519867551931; _iuqxldmzr_=32; _ntes_nnid=f122a398cbaaaf93677fec2c7cf59e57,1519865752939; _ntes_nuid=f122a398cbaaaf93677fec2c7cf59e57; MUSIC_U=779c74b4e7ab4be96990c699b6d834d197bb37e21088cf4f7b4037317b307382769ad46e468230dd22b152f6679175385e4194d727100a7b9e706c55560990274efd9cbaea4deaedbf122d59fa1ed6a2; __remember_me=true; __csrf=7a640bdf6a259968a03c89628f636739; monitor_count=2; jsessionid-cpta=jUXpSzAouX%5CWg2cDeZQELwo8FZQt4WpFK42gCU1Tr0QrBBR3JprXkKtVg4U08O2n9c%2FPgAekk2ecKoCrp1ztjyxmW6BwQwDAhX%2BpiwjSzUKv9aarI2qnxkg%2B3K%2BS%2ByGMTvUDBLa%2B7KOgjRxnUYtQqjrmyCXw17xe24imhSg26txNmV2X%3A1519866691794; c98xpt_=30; NETEASE_WDA_UID=1385627234#|#1519865801483; __utma=94650624.1469131904.1519865756.1519865756.1519865756.1; __utmb=94650624.3.10.1519865756; __utmc=94650624; __utmz=94650624.1519865756.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)';
 /************ ↑↑↑↑↑ 如果网易云音乐歌曲获取失效，请将你的 COOKIE 放到这儿 ↑↑↑↑↑ ***************/
 /**
 * cookie 获取及使用方法见 

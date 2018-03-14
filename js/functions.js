@@ -30,7 +30,7 @@ $(function(){
     
     rem.isMobile = isMobile.any();
     rem.webTitle = document.title;      // 记录页面原本的标题
-    
+    rem.errCount = 0;   
     initProgress();     // 初始化音量条、进度条（进度条初始化要在 Audio 前，别问我为什么……）
     initAudio();    // 初始化 audio 标签，事件绑定
     
@@ -397,6 +397,7 @@ function openDownloadDialog(url, saveName)
     }
     var aLink = document.createElement('a');
     aLink.href = url;
+    aLink.target = "_blank";
     aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
     var event;
     if(window.MouseEvent) event = new MouseEvent('click');
@@ -464,7 +465,7 @@ function changeCover(music) {
                     $("#blur-img").backgroundBlur(img);    // 替换图像并淡出
                     $("#blur-img").animate({opacity:"1"}, 2000); // 背景更换特效
                 } else {
-                    animate = true;     // 等待图像加载完
+                    a6nimate = true;     // 等待图像加载完
                 }
             });
         }
@@ -587,7 +588,7 @@ function addListbar(types) {
         break;
         
         case "nodata":  // 列表中没有内容
-            html = '<div class="list-item text-center" id="list-foot">可能是个假列表，什么也没有</div>';
+            html = '<div class="list-item text-center" id="list-foot">当前播放列表为空</div>';
         break;
         
         case "clear":   // 清空列表

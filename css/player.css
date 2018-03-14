@@ -137,12 +137,12 @@ body {
     -ms-transition: all 0.25s ease;
     display: inline-block;
     font-size: 23px;
-    color: #829194;
+    color: #319a7c;
     cursor: pointer;
     margin: 10px 20px;
 }
 .logo:hover {
-    color: #fff;
+    color: #2cae6f;
 }
 
 /* 宽度约束容器 */
@@ -202,6 +202,7 @@ body {
 }
 .btn:hover {
     border: 1px solid #fff;
+    background-color:rgba(239,239,239,.2);
     opacity: 1;
     filter: alpha(opacity=100);
 }
@@ -288,7 +289,7 @@ body {
 
 /* 正在播放的那项 */
 .list-playing {
-    color: #fff;
+    color: #319a7c;
 }
 
 /* 列表数字 */
@@ -386,19 +387,19 @@ body {
     background-position: -80px 0;
 }
 .icon-play:hover {
-    background-position: -120px 0;
+    background-position: -40px 0;
 }
 .icon-download {
     background-position: -80px -120px;
 }
 .icon-download:hover {
-    background-position: -120px -120px;
+    background-position: -40px -120px;
 }
 .icon-share {
     background-position: -80px -40px;
 }
 .icon-share:hover {
-    background-position: -120px -40px;
+    background-position: -40px -40px;
 }
 
 /* 分享弹窗中的链接框 */
@@ -546,7 +547,9 @@ body {
 }
 /* 正在播放的那一句歌词 */
 #lyric .lplaying {
-    color: #31c27c;
+    color: #319a7c;
+    font-weight: 500;
+    text-shadow: 0 0 1px #00a99e;
 }
 /* 歌词显示区显示的提示语(如加载中、无歌词等) */
 .lyric-tip {
@@ -585,7 +588,7 @@ body {
 }
 /* 标题 */
 .info-title {
-    color: #B2AFAF
+    color: #319a7c;
 }
 .info-btn {
     cursor: pointer;
@@ -759,7 +762,7 @@ body {
 /* 进度条已完成区域 */
 .mkpgb-cur {
     position: absolute;
-    background-color: #D8D8D8; 
+    background-color: #319a7c; 
     width: 0; 
     height: 2px; 
     top: 50%;
@@ -775,7 +778,7 @@ body {
 .mkpgb-dot {
     width: 10px; 
     height: 10px; 
-    background-color: #fff; 
+    background-color: #319a7c; 
     border-radius: 5px; 
     overflow: hidden; 
     position: absolute; 
@@ -803,4 +806,4 @@ body {
     -ms-animation: dot-move 3s linear 2s infinite;
 }
 @-webkit-keyframes dot-move{0%{-webkit-box-shadow: 0 0 20px #fff;}25%{-webkit-box-shadow: 0 0 10px #fff;}50%{-webkit-box-shadow: 0 0 0px #fff;}75%{-webkit-box-shadow: 0 0 10px #fff;}100%{-webkit-box-shadow: 0 0 20px #fff;}}
-@keyframes dot-move{0%{-webkit-box-shadow: 0 0 10px #363333;}25%{-webkit-box-shadow: 0 0 7px #363333;}50%{-webkit-box-shadow: 0 0 0px #fff;}75%{-webkit-box-shadow: 0 0 6px #fff;}100%{-webkit-box-shadow: 0 0 10px #363333;}}
+@keyframes dot-move{0%{-webkit-box-shadow: 0 0 10px #2fc37b;}25%{-webkit-box-shadow: 0 0 7px #2fc37b;}50%{-webkit-box-shadow: 0 0 0px #fff;}75%{-webkit-box-shadow: 0 0 6px #fff;}100%{-webkit-box-shadow: 0 0 10px #2fc37b;}}

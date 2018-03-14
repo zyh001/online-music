@@ -14,8 +14,8 @@ var mkPlayer = {
     coverbg: true,      // 是否开启封面背景(true/false) *开启后会有些卡
     mcoverbg: true,     // 是否开启[移动端]封面背景(true/false)
     dotshine: true,    // 是否开启播放进度条的小点闪动效果[不支持IE](true/false) *开启后会有些卡
-    mdotshine: false,   // 是否开启[移动端]播放进度条的小点闪动效果[不支持IE](true/false)
-    volume: 0.6,        // 默认音量值(0~1之间)
+    mdotshine: true,   // 是否开启[移动端]播放进度条的小点闪动效果[不支持IE](true/false)
+    volume: 0.8,        // 默认音量值(0~1之间)
     version: "v2.32",    // 播放器当前版本号(仅供调试)
     debug: false   // 是否开启调试模式(true/false)
 };
@@ -36,8 +36,14 @@ function audioErr() {
     // 没播放过，直接跳过
     if(rem.playlist === undefined) return true;
     
-    layer.msg('当前歌曲播放失败，自动播放下一首');
-    nextMusic();    // 切换下一首歌
+    if(rem.errCount > 10) { // 连续播放失败的歌曲过多
+        layer.msg('似乎出了点问题~播放已停止');
+        rem.errCount = 0;
+    } else {
+        rem.errCount++;     // 记录连续播放失败的歌曲数目
+        layer.msg('当前歌曲播放失败，自动播放下一首');
+        nextMusic();    // 切换下一首歌
+    } 
 }
 
 // 点击暂停按钮的事件
@@ -148,7 +154,7 @@ function nextMusic() {
       break;
     case 3: 
       if (musicList[1] && musicList[1].item.length) {
-        var id = parseInt(Math.random() * musicList[1].item.length)
+        var id = parseInt(Math.random() * musicList[1].item.length);
         playList(id);
       }
       break;
@@ -162,7 +168,7 @@ function autoNextMusic() {
   if(rem.order && rem.order === 1) {
     playList(rem.playid);
   } else {
-    nextMusic()
+    nextMusic();
   }
 }
 
@@ -310,14 +316,6 @@ function play(music) {
     } else {
         refreshList();  // 更新列表显示
     }
-    
-    // 解决网易云音乐部分歌曲无法播放问题
-    if(music.source == "netease") {
-        music.url = music.url.replace(/m7c.music./g, "m7.music.");
-        music.url = music.url.replace(/m8c.music./g, "m8.music.");
-    } else if(music.source == "baidu") {    // 解决百度音乐防盗链
-        music.url = music.url.replace(/http:\/\/zhangmenshiting.qianqian.com/g, "https://gss0.bdstatic.com/y0s1hSulBw92lNKgpU_Z2jR7b2w6buu");
-    }
 	
     try {
         rem.audio[0].pause();
@@ -328,6 +326,7 @@ function play(music) {
         return;
     }
     
+    rem.errCount = 0;   // 连续播放失败的歌曲数归零
     music_bar.goto(0);  // 进度条强制归零
     changeCover(music);    // 更新封面展示
     ajaxLyric(music, lyricCallback);     // ajax加载歌词
@@ -337,7 +336,7 @@ function play(music) {
 
 // 我的要求并不高，保留这一句版权信息可好？
 // 保留了，你不会损失什么；而保留版权，是对作者最大的尊重。
-console.info('欢迎使用 MKOnlinePlayer!\n当前版本：'+mkPlayer.version+' \n作者：mengkun(http://mkblog.cn)\n歌曲来源于各大音乐平台\nGithub：https://github.com/mengkunsoft/MKOnlineMusicPlayer');
+console.info('欢迎使用这个非常垃圾的音乐播放器\n这里本应该显示版权信息，但很可惜，万恶的第三方开发者把它删了，删了就删了吧\n我会画个圈圈诅咒Ta的');
 
 // 音乐进度条拖动回调函数
 function mBcallback(newVal) {
