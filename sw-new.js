@@ -1,6 +1,6 @@
 'use strict';
 
-const version = 'music_201703231500';
+const version = 'music_201804011500';
 const __DEVELOPMENT__ = false;
 const __DEBUG__ = true;
 const offlineResources = [
