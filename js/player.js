@@ -68,29 +68,32 @@ function pause() {
 
 // 循环顺序
 function orderChange() {
-  if(!rem.order){
-    rem.order = 2
-  }
-  rem.order++;
-  if(rem.order > 3){
-    rem.order = 1
-  }
-  var orderDiv = $(".btn-order")
-  orderDiv.removeClass()
-  
-  if ( 1 === rem.order ) {
-    orderDiv.addClass("player-btn btn-order btn-order-single")
-    orderDiv.attr("title","单曲循环")
-  } 
-  else if ( 2 === rem.order ) {
-    orderDiv.addClass("player-btn btn-order btn-order-list")
-    orderDiv.attr("title","列表循环")
-  }
-  else if ( 3 === rem.order ) {
-    orderDiv.addClass("player-btn btn-order btn-order-random")
-    orderDiv.attr("title","随机播放")
-  }
+    var orderDiv = $(".btn-order");
+    orderDiv.removeClass();
+    switch(rem.order) {
+        case 1:     // 单曲循环 -> 列表循环
+            orderDiv.addClass("player-btn btn-order btn-order-list");
+            orderDiv.attr("title", "列表循环");
+            layer.msg("列表循环");
+            rem.order = 2;
+            break;
+            
+        case 3:     // 随机播放 -> 单曲循环
+            orderDiv.addClass("player-btn btn-order btn-order-single");
+            orderDiv.attr("title", "单曲循环");
+            layer.msg("单曲循环");
+            rem.order = 1;
+            break;
+            
+        // case 2:
+        default:    // 列表循环(其它) -> 随机播放
+            orderDiv.addClass("player-btn btn-order btn-order-random");
+            orderDiv.attr("title", "随机播放");
+            layer.msg("随机播放");
+            rem.order = 3;
+    }
 }
+
 // 播放
 function audioPlay() {
     rem.paused = false;     // 更新状态（未暂停）
@@ -457,4 +460,13 @@ mkpgb.prototype = {
         }
         return true;
     }
-};  
+};
+// 快捷键切歌，代码来自 @茗血(https://www.52benxi.cn/)
+document.onkeydown = function showkey(e) {
+    var key = e.keyCode || e.which || e.charCode;
+    var ctrl = e.ctrlKey || e.metaKey;
+    var isFocus = $('input').is(":focus");  
+    if (ctrl && key == 37) playList(rem.playid - 1);    // Ctrl+左方向键 切换上一首歌
+    if (ctrl && key == 39) playList(rem.playid + 1);    // Ctrl+右方向键 切换下一首歌
+    if (key == 32 && isFocus == false) pause();         // 空格键 播放/暂停歌曲
+}  
